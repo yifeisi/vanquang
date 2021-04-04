@@ -9,7 +9,7 @@ app.set("views","./views");
 var server = require("http").Server(app);
 var io= require("socket.io")(server);
 //server lang nghe port
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
 //lang nghe co ai ket noi len hay khong
 var mang=[];
 
