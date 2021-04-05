@@ -13,12 +13,6 @@ app.use(function(req, res, next) {
     next();
 })
 const cors = require("cors");
-app.use(
-    cors({
-      origin: "https://vanquangonline.herokuapp.com", // restrict calls to those this address
-      methods: "GET" // only allow GET requests
-    })
-  );
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://broker.hivemq.com');
@@ -31,7 +25,9 @@ var http = require('https');
 var io= require("socket.io")(server, {
     cors: {
       origin: "https://vanquangonline.herokuapp.com",
-      credentials: true
+      credentials: true,
+      allowedHeaders: ["my-custom-header"],
+      methods: ["GET", "POST"]
     }
   });
 //server lang nghe port
