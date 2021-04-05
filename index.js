@@ -12,6 +12,13 @@ app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 })
+const cors = require("cors");
+app.use(
+    cors({
+      origin: "https://vanquangonline.herokuapp.com", // restrict calls to those this address
+      methods: "GET" // only allow GET requests
+    })
+  );
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://broker.hivemq.com');
