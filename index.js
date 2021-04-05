@@ -16,6 +16,13 @@ var io= require("socket.io")(server);
 server.listen(process.env.PORT || 8080);
 //lang nghe co ai ket noi len hay khong
 
+
+client.on('error', (err) => {
+    console.log(err);
+})
+client.on('disconnect', () => {
+        console.log('mqtt client has been disconected.')
+});
 client.on('connect', ()=>{
     io.on("connection",function(socket){
         console.log("co nguoi ket noi"+ socket.id);
@@ -34,6 +41,7 @@ client.on('connect', ()=>{
     client.subscribe(topic,function (err){
         client.on('message', (topic, message)=>{
             io.sockets.emit("Server-send-data",message.toString()+"888");
+            console.log(message.toString());
         });
     });
     
