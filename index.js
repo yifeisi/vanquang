@@ -1,5 +1,7 @@
 var express = require("express");
 var app= express();
+
+
 //khach hang yeu cau no vao thu muc public tim
 app.use(express.static("public"));
 app.set("view engine","ejs");
@@ -7,14 +9,22 @@ app.set("view engine","ejs");
 app.set("views","./views");
 
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-})
-app.use(require('cors')())
+    handlePreflightRequest: (req, res) => {
+        const headers = {
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
+            "Access-Control-Allow-Credentials": true
+        };
+        res.writeHead(200, headers);
+        res.end();
+    }
+});
 
 const cors = require("cors");
+app.use(cors());
+
+
+
 
 var mqtt = require('mqtt');
 var client = mqtt.connect('mqtt://broker.hivemq.com');

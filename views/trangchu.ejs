@@ -6,7 +6,7 @@
         <script src="https://vanquangonline.herokuapp.com/socket.io/socket.io.js"></script>
         <script>
             // goi dien len server
-            var socket =io("https://vanquangonline.herokuapp.com");
+            var socket =io("https://vanquangonline.herokuapp.com/");
             socket.on("Server-send-data",function(data){
                 $("#noidung").append(data + ",");
             });
