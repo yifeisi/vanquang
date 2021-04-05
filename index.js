@@ -12,7 +12,12 @@ var client = mqtt.connect('mqtt://broker.hivemq.com');
 var topic = 'bbb';
 
 var server = require("http").Server(app);
-var io= require("socket.io")(server);
+var io= require("socket.io")(server, {
+    cors: {
+      origin: "https://vanquangonline.herokuapp.com",
+      credentials: true
+    }
+  });
 //server lang nghe port
 server.listen(process.env.PORT || 8080);
 //lang nghe co ai ket noi len hay khong
