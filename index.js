@@ -11,7 +11,7 @@ var client = mqtt.connect('mqtt://broker.hivemq.com');
 //var client = mqtt.connect('mqtt://localhost:1883');
 var topic = 'bbb';
 
-var server = require("http").Server(app);
+var server = require("https").Server(app);
 var io= require("socket.io")(server, {
     cors: {
       origin: "https://vanquangonline.herokuapp.com",
