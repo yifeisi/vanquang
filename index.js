@@ -7,7 +7,8 @@ app.set("view engine","ejs");
 app.set("views","./views");
 
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://localhost:1883');
+var client = mqtt.connect('mqtt://broker.hivemq.com');
+//var client = mqtt.connect('mqtt://localhost:1883');
 var topic = 'bbb';
 
 var server = require("http").Server(app);
