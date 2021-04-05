@@ -9,11 +9,10 @@ app.set("view engine","ejs");
 app.set("views","./views");
 
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-})
+});
 
 const cors = require("cors");
 app.use(cors());
@@ -29,17 +28,7 @@ var topic = 'bbb';
 var server = require("http").Server(app);
 var http = require('https');
 
-var io= require("socket.io")(server, {
-    handlePreflightRequest: (req, res) => {
-        const headers = {
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
-            "Access-Control-Allow-Credentials": true
-        };
-        res.writeHead(200, headers);
-        res.end();
-    }
-  });
+var io= require("socket.io")(server);
 //server lang nghe port
 server.listen(process.env.PORT || 8000);
 //lang nghe co ai ket noi len hay khong
