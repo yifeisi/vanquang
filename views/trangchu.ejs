@@ -10,15 +10,23 @@
             socket.on("Server-send-data",function(data){
                 $("#noidung").append(data + ",");
             });
+            socket.on("Server-send-data1",function(data){
+                $("#noidung1").append(data + ",");
+            });
             $(document).ready(function(){
                 $("#mrA").click(function(){
                     socket.emit("Client-send-data","game de vcccccccc");
+                })
+                $("#mrA1").click(function(){
+                    socket.emit("Client-send-data1","chao aaaaaa");
                 })
             });
         </script>
     </head>
     <body>
         <div id="mrA">CLick send</div>
+        <div id="mrA1">CLick send1</div>
         <h2 id="noidung">...</h2>
+        <h2 id="noidung1">...</h2>
     </body>
 </html>

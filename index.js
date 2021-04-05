@@ -46,6 +46,23 @@ client.on('connect', ()=>{
     });
     
 })
+io.on("connection",function(socket){
+    socket.on("Client-send-data1",function(data){
+        //console.log(data);
+        //gui tat ca 
+        io.sockets.emit("Server-send-data1",data);
+        console.log("888");
+        console.log('Message sent!', data);
+        //io.sockets.emit("Server-send-data",data+"888");
+        //gui cho thang gui minh
+        //socket.emit("Server-send-data",data+"888");
+        //gui cho nhung thang khac
+        //socket.broadcast.emit("Server-send-data",data+"888");
+    });
+});
+
+    
+
 app.get("/", function(req, res){
     res.render("trangchu");
 })
