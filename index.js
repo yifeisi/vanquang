@@ -12,6 +12,8 @@ app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 })
+app.use(require('cors')())
+
 const cors = require("cors");
 
 var mqtt = require('mqtt');
