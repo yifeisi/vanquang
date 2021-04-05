@@ -35,7 +35,7 @@ var io= require("socket.io")(server, {
     }
   });
 //server lang nghe port
-server.listen(process.env.PORT || 8080);
+server.listen(process.env.PORT || 8000);
 //lang nghe co ai ket noi len hay khong
 
 
