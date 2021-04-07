@@ -1,7 +1,7 @@
 var express = require("express");
 var app= express();
 
-
+const cors = require("cors");
 //khach hang yeu cau no vao thu muc public tim
 app.use(express.static("public"));
 app.set("view engine","ejs");
@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-const cors = require("cors");
+
 app.use(cors());
 
 
